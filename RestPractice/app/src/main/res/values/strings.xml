@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RestPractice</string>
+    <string name="distance_value">%1$.2f mi</string>
 </resources>

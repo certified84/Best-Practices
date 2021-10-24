@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2021 Samson Achiaga
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,6 +15,7 @@
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.certified.restpractice">
 
     <application
@@ -24,7 +24,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.RestPractice">
+        android:theme="@style/Theme.RestPractice"
+        tools:replace="android:theme">
         <activity
             android:name=".MainActivity"
             android:exported="true">
