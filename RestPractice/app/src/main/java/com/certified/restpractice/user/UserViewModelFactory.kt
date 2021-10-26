@@ -14,17 +14,15 @@
  * limitations under the License.
  */
 
-package com.certified.restpractice
+package com.certified.restpractice.user
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.certified.restpractice.databinding.ActivityMainBinding
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        val binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+class UserViewModelFactory : ViewModelProvider.Factory {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(UserViewModel::class.java))
+            return UserViewModel() as T
+        throw IllegalArgumentException("Unknown ViewModel Class")
     }
 }

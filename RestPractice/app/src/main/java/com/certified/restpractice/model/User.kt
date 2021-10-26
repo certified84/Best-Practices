@@ -14,17 +14,14 @@
  * limitations under the License.
  */
 
-package com.certified.restpractice
+package com.certified.restpractice.model
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.certified.restpractice.databinding.ActivityMainBinding
+import com.squareup.moshi.Json
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        val binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-    }
-}
+data class User(
+    @field:Json(name = "id") val id: Int,
+    @field:Json(name = "email") val email: String,
+    @field:Json(name = "first_name") val first_name: String,
+    @field:Json(name = "last_name") val last_name: String,
+    @field:Json(name = "avatar") val avatar: String
+)

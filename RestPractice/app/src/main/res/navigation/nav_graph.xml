@@ -1,4 +1,4 @@
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2021 Samson Achiaga
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,9 +14,13 @@
   ~ limitations under the License.
   -->
 
-<resources>
-    <string name="app_name">RestPractice</string>
-    <string name="distance_value">%1$.2f mi</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-</resources>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/usersFragment">
+
+    <fragment
+        android:id="@+id/usersFragment"
+        android:name="com.certified.restpractice.user.UsersFragment"
+        android:label="UsersFragment" />
+</navigation>

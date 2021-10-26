@@ -14,17 +14,15 @@
  * limitations under the License.
  */
 
-package com.certified.restpractice
+package com.certified.restpractice.model
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.certified.restpractice.databinding.ActivityMainBinding
+import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        val binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-    }
-}
+data class UserListResponse(
+    @field:Json(name = "page") val page: Int,
+    @field:Json(name = "per_page") val per_page: Int,
+    @field:Json(name = "total") val total: Int,
+    @field:Json(name = "total_pages") val total_pages: Int,
+    @field:Json(name = "data") val data: List<User>
+)
