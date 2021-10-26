@@ -26,12 +26,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.certified.restpractice.adapters.UserAdapter
 import com.certified.restpractice.databinding.FragmentUsersBinding
-import com.certified.restpractice.model.User
 
 class UsersFragment : Fragment() {
 
     private lateinit var binding: FragmentUsersBinding
-    private lateinit var users: List<User>
+    private var exception: Exception? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,17 +48,20 @@ class UsersFragment : Fragment() {
         val viewModel: UserViewModel by lazy {
             ViewModelProvider(viewModelStore, viewModelFactory).get(UserViewModel::class.java)
         }
-        viewModel.users.observe(viewLifecycleOwner) {
-            users = it
-        }
         viewModel.showProgressBar.observe(viewLifecycleOwner) {
             binding.apply {
                 if (it) progressBar.visibility = View.VISIBLE
                 else progressBar.visibility = View.GONE
             }
         }
+        viewModel.exception.observe(viewLifecycleOwner) { exception = it }
         viewModel.showToast.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), "Unable to load users", Toast.LENGTH_LONG).show()
+            if (exception != null)
+                Toast.makeText(
+                    requireContext(),
+                    "Unable to load users: ${exception?.message}",
+                    Toast.LENGTH_LONG
+                ).show()
             binding.progressBar.visibility = View.GONE
         }
 

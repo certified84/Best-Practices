@@ -20,7 +20,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.certified.restpractice.Network.UserApiService
+import com.certified.restpractice.Network.UserApi
 import com.certified.restpractice.model.User
 import kotlinx.coroutines.launch
 
@@ -38,6 +38,10 @@ class UserViewModel : ViewModel() {
     val showToast: LiveData<Boolean>
         get() = _showToast
 
+    private val _exception = MutableLiveData<Exception>()
+    val exception: LiveData<Exception>
+        get() = _exception
+
     init {
         getUsers()
     }
@@ -45,12 +49,12 @@ class UserViewModel : ViewModel() {
     private fun getUsers() {
         viewModelScope.launch {
             try {
-                val getUsers = UserApiService.createUserApiService().getUsers()
+                val getUsers = UserApi.userApiService.getUsers()
                 _users.value = getUsers.data
-                if (users.value?.isNotEmpty() == true)
-                    _showProgressBar.value = false
+                _showProgressBar.value = false
             } catch (e: Exception) {
                 _showToast.value = true
+                _exception.value = e
             }
         }
     }

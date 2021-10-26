@@ -16,13 +16,10 @@
 
 package com.certified.restpractice.model
 
-import com.squareup.moshi.Json
-import kotlinx.android.parcel.Parcelize
-
 data class UserListResponse(
-    @field:Json(name = "page") val page: Int,
-    @field:Json(name = "per_page") val per_page: Int,
-    @field:Json(name = "total") val total: Int,
-    @field:Json(name = "total_pages") val total_pages: Int,
-    @field:Json(name = "data") val data: List<User>
+    val page: Int,
+    val total: Int,
+    val per_page: Int,
+    val total_pages: Int,
+    val data: List<User>
 )

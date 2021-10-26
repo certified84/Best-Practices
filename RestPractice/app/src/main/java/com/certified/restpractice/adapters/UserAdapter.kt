@@ -24,8 +24,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.certified.restpractice.databinding.LayoutItemUserBinding
 import com.certified.restpractice.model.User
 
-class UserAdapter :
-    ListAdapter<User, UserAdapter.ViewHolder>(diffCallback) {
+class UserAdapter : ListAdapter<User, UserAdapter.ViewHolder>(diffCallback) {
 
     companion object {
         private val diffCallback = object : DiffUtil.ItemCallback<User>() {
@@ -46,21 +45,18 @@ class UserAdapter :
 
         init {
             itemView.setOnClickListener {
-
+//                TODO: Show the users details
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
-        LayoutItemUserBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        )
+        LayoutItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val currentItem = getItem(position)
+        if (currentItem != null)
+            holder.bind(getItem(position))
     }
 }

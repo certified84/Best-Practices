@@ -17,22 +17,32 @@
 package com.certified.restpractice.Network
 
 import com.certified.restpractice.model.UserListResponse
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
+private const val BASE_URL = "https://reqres.in"
+
 interface UserApiService {
 
     @GET("/api/users")
     suspend fun getUsers(): UserListResponse
+}
 
-    companion object {
-        fun createUserApiService(): UserApiService =
-            Retrofit.Builder()
-                .baseUrl("https://reqres.in")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-                .create(UserApiService::class.java)
-    }
+private val moshi
+    get() = Moshi.Builder()
+        .add(KotlinJsonAdapterFactory())
+        .build()
+
+private val retrofit: Retrofit
+    get() = Retrofit.Builder()
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .baseUrl(BASE_URL)
+        .build()
+
+object UserApi {
+    val userApiService: UserApiService by lazy { retrofit.create(UserApiService::class.java) }
 }

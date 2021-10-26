@@ -34,7 +34,7 @@ fun bindImage(view: ImageView, avatar: String) {
 }
 
 @BindingAdapter("listUsers")
-fun bindUserRecyclerView(recyclerView: RecyclerView, data: List<User>) {
+fun bindUserRecyclerView(recyclerView: RecyclerView, data: List<User>?) {
     val adapter = recyclerView.adapter as UserAdapter
     adapter.submitList(data)
 }

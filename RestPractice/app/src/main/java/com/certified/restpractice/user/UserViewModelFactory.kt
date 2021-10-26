@@ -18,6 +18,7 @@ package com.certified.restpractice.user
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.certified.restpractice.Network.UserApiService
 
 class UserViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
