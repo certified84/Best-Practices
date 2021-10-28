@@ -49,8 +49,7 @@ class UserViewModel : ViewModel() {
     private fun getUsers() {
         viewModelScope.launch {
             try {
-                val getUsers = UserApi.userApiService.getUsers()
-                _users.value = getUsers.data
+                _users.value = UserApi.userApiService.getUsers().data
                 _showProgressBar.value = false
             } catch (e: Exception) {
                 _showToast.value = true

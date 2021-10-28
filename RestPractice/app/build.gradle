@@ -78,9 +78,6 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2-native-mt'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt'
 
-//    Datastore
-    implementation 'androidx.datastore:datastore-preferences:1.0.0'
-
     // Retrofit, Moshi & Gson
     implementation "com.google.code.gson:gson:2.8.6"
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
@@ -88,9 +85,6 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
     implementation "com.squareup.moshi:moshi:1.9.3"
     implementation "com.squareup.moshi:moshi-kotlin:1.9.3"
-
-//    circle image
-    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
 //    glide
     implementation 'com.github.bumptech.glide:glide:4.12.0'
