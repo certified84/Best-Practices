@@ -1,4 +1,4 @@
-package com.certified.datastoreexample
+package com.certified.datastoreexample.util
 
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.stringPreferencesKey
