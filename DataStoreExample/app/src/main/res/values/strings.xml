@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DataStore Example</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="password">Password</string>
 </resources>
