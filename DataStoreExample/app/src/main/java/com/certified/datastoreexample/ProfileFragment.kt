@@ -17,12 +17,10 @@ import com.certified.datastoreexample.util.PreferencesKeys.USER_NAME_PREF_KEY
 import com.certified.datastoreexample.util.PreferencesKeys.USER_PASSWORD_PREF_KEY
 import com.certified.datastoreexample.util.PreferencesKeys.USER_PHONE_PREF_KEY
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-class ProfileFragment : Fragment(), View.OnClickListener {
+class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
 
@@ -38,6 +36,18 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         }
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.apply {
+            groupEditName.setOnClickListener { launchEditDetailDialog("name") }
+            groupEditEmail.setOnClickListener { launchEditDetailDialog("email") }
+            groupEditPhone.setOnClickListener { launchEditDetailDialog("phone") }
+            groupEditPassword.setOnClickListener { launchEditDetailDialog("password") }
+            fabSettings.setOnClickListener { launchEditDetailDialog("password") }
+        }
     }
 
     //    Read from data store
@@ -61,32 +71,13 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         }
 
         binding.apply {
-            userNameFlow.collect {
-                tvName.text = it
-            }
+            userNameFlow.collectLatest { tvName.text = it }
 
-            userEmailFlow.collect {
-                tvEmail.text = it
-            }
+            userEmailFlow.buffer().collect { tvEmail.text = it }
 
-            userPhoneFlow.collect {
-                tvPhone.text = it
-            }
+            userPhoneFlow.collect { tvPhone.text = it }
 
-            userPasswordFlow.collect {
-                tvPassword.text = it
-            }
-        }
-    }
-
-    override fun onClick(p0: View?) {
-        binding.apply {
-            when (p0) {
-                groupEditName -> launchEditDetailDialog("name")
-                groupEditEmail -> launchEditDetailDialog("email")
-                groupEditPhone -> launchEditDetailDialog("phone")
-                groupEditPassword -> launchEditDetailDialog("password")
-            }
+            userPasswordFlow.collect { tvPassword.text = it }
         }
     }
 
@@ -119,9 +110,10 @@ class ProfileFragment : Fragment(), View.OnClickListener {
             }
             btnSave.setOnClickListener {
                 val text = etEditProfile.text.toString().trim()
-                if (text.isNotEmpty())
+                if (text.isNotEmpty()) {
                     lifecycleScope.launch { saveUserDetails(text, which) }
-                else
+                    bottomSheetDialog.dismiss()
+                } else
                     showToast("Field is required")
             }
             btnCancel.setOnClickListener { bottomSheetDialog.cancel() }
