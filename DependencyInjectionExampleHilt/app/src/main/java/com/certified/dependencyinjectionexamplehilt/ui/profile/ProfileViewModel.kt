@@ -1,4 +1,4 @@
-package com.certified.dependencyinjectionexamplehilt.view.profile
+package com.certified.dependencyinjectionexamplehilt.ui.profile
 
 import androidx.lifecycle.*
 import com.certified.dependencyinjectionexamplehilt.data.model.User

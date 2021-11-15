@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.certified.dependencyinjectionexamplehilt.view.profile.ProfileViewModel" />
+            type="com.certified.dependencyinjectionexamplehilt.ui.profile.ProfileViewModel" />
     </data>
 
     <ScrollView

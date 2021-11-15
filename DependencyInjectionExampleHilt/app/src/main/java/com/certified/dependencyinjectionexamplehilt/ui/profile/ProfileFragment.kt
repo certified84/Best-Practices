@@ -1,4 +1,4 @@
-package com.certified.dependencyinjectionexamplehilt.view.profile
+package com.certified.dependencyinjectionexamplehilt.ui.profile
 
 import android.os.Bundle
 import android.text.InputType
@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.certified.datastoreexample.util.Extensions.showToast
 import com.certified.dependencyinjectionexamplehilt.R
@@ -21,10 +21,11 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
 
-    @Inject
-    private lateinit var viewModel: ProfileViewModel
     private lateinit var binding: FragmentProfileBinding
-//    private val repository by lazy { Repository() }
+
+    @Inject
+    lateinit var viewModelFactory: ProfileViewModelFactory
+    private val viewModel: ProfileViewModel by viewModels { viewModelFactory }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,10 +39,6 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-//        val viewModelFactory = ProfileViewModelFactory(repository)
-//        viewModel =
-//            ViewModelProvider(viewModelStore, viewModelFactory).get(ProfileViewModel::class.java)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this

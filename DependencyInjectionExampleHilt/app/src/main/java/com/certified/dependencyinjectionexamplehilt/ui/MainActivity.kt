@@ -1,10 +1,9 @@
-package com.certified.dependencyinjectionexamplehilt.view
+package com.certified.dependencyinjectionexamplehilt.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentTransaction
 import com.certified.dependencyinjectionexamplehilt.databinding.ActivityMainBinding
-import com.certified.dependencyinjectionexamplehilt.view.profile.ProfileFragment
+import com.certified.dependencyinjectionexamplehilt.ui.profile.ProfileFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

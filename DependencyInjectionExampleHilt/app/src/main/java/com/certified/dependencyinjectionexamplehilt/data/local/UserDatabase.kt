@@ -48,7 +48,7 @@ abstract class UserDatabase : RoomDatabase() {
                     context.applicationContext,
                     UserDatabase::class.java,
                     "user_database"
-                ).addCallback(roomCallback).fallbackToDestructiveMigration().build()
+                ).fallbackToDestructiveMigration().addCallback(roomCallback).build()
                 INSTANCE = instance
             }
             return instance

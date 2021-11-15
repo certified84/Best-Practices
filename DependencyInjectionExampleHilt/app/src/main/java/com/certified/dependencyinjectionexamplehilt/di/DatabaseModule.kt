@@ -1,13 +1,13 @@
-package com.certified.dependencyinjectionexamplehilt.util
+package com.certified.dependencyinjectionexamplehilt.di
 
 import android.app.Application
+import android.content.Context
 import com.certified.dependencyinjectionexamplehilt.data.local.UserDao
 import com.certified.dependencyinjectionexamplehilt.data.local.UserDatabase
-import dagger.Binds
+import com.certified.dependencyinjectionexamplehilt.util.Repository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ActivityScoped
 import dagger.hilt.components.SingletonComponent
@@ -17,11 +17,11 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
 
-    @ActivityScoped
+//    @ActivityScoped
     @Singleton
     @Provides
-    fun provideDatabase(@ApplicationContext application: Application) =
-        UserDatabase.getInstance(application)
+    fun provideDatabase(@ApplicationContext context: Context) =
+        UserDatabase.getInstance(context)
 
     @Provides
     fun provideUserDao(userDatabase: UserDatabase) = userDatabase.userDao()

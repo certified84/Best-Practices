@@ -7,7 +7,6 @@ import javax.inject.Inject
 
 class Repository @Inject constructor(private val userDao: UserDao) {
 
-    //    private val userDao: UserDao = userDatabase.userDao()
     val user: LiveData<User> = userDao.getUser()
 
     suspend fun insertUser(user: User) {

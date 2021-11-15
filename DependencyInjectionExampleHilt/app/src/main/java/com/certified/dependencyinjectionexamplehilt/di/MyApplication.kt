@@ -1,4 +1,4 @@
-package com.certified.dependencyinjectionexamplehilt.util
+package com.certified.dependencyinjectionexamplehilt.di
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
