@@ -1,15 +1,16 @@
 package com.certified.dependencyinjectionexamplehilt.ui.profile
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.certified.dependencyinjectionexamplehilt.data.model.User
 import com.certified.dependencyinjectionexamplehilt.util.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class ProfileViewModel @Inject constructor(private val repository: Repository) :
-    ViewModel() {
+//@HiltViewModel
+class ProfileViewModel(private val repository: Repository) : ViewModel() {
 
     private var _user = MutableLiveData<User>()
     val user: LiveData<User> = _user

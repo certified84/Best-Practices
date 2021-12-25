@@ -1,5 +1,6 @@
 package com.certified.dependencyinjectionexamplehilt.data.local
 
+import android.app.Application
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
@@ -48,7 +49,7 @@ abstract class UserDatabase : RoomDatabase() {
                     context.applicationContext,
                     UserDatabase::class.java,
                     "user_database"
-                ).fallbackToDestructiveMigration().addCallback(roomCallback).build()
+                ).addCallback(roomCallback).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
             }
             return instance

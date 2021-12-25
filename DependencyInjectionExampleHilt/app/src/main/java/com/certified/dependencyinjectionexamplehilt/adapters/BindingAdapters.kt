@@ -1,8 +1,6 @@
 package com.certified.dependencyinjectionexamplehilt.adapters
 
-import android.graphics.Bitmap
 import android.net.Uri
-import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide

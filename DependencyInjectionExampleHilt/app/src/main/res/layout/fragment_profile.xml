@@ -22,7 +22,7 @@
                 android:id="@+id/profile_image"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                image="@{viewModel.user.image}"
+                app:image="@{viewModel.user.image}"
                 tools:src="@drawable/no_profile_image"
                 app:layout_constraintBottom_toTopOf="@+id/guideline2"
                 app:layout_constraintDimensionRatio="1:1"
